@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
-import { CompetitionData } from '../../../models/competitions.response';
 import { Router, RouterModule } from '@angular/router';
+import { CompetitionData } from '../../../models/competition-data';
 
 @Component({
   selector: 'app-competition-card',

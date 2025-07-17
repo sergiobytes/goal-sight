@@ -4,10 +4,10 @@
 >
   <img
     [src]="competition().emblem"
-    [alt]="competition().area.name"
+    [alt]="competition().area?.name"
     class="w-10 h-10 object-contain"
   />
   <h2 class="text-lg text-start font-semibold text-gray-800 dark:text-white">
-    {{ competition().name }} | {{ competition().area.name }}
+    {{ competition().name }} | {{ competition().area?.name }}
   </h2>
 </button>

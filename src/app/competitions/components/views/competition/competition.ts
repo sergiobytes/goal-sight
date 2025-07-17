@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FootballData } from '../../../../services/football-data';
-import { CompetitionData } from '../../../../models/competitions.response';
+import { CompetitionData } from '../../../../models/competition-data';
 
 @Component({
   selector: 'app-competition',

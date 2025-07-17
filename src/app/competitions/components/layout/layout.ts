@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FootballData } from '../../../services/football-data';
-import { CompetitionData } from '../../../models/competitions.response';
+import { CompetitionData } from '../../../models/competition-data';
 import { Card } from '../card/card';
 
 @Component({
