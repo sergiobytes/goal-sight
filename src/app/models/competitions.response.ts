@@ -1,10 +1,10 @@
 export interface CompetitionsResponse {
   count: number;
   filters: Filters;
-  competitions: Competition[];
+  competitions: CompetitionData[];
 }
 
-export interface Competition {
+export interface CompetitionData {
   id: number;
   area: Area;
   name: string;
@@ -12,8 +12,9 @@ export interface Competition {
   type: Type;
   emblem: string;
   plan: Plan;
-  currentSeason: CurrentSeason;
-  numberOfAvailableSeasons: number;
+  currentSeason: Season;
+  seasons?: Season[]
+  numberOfAvailableSeasons?: number;
   lastUpdated: Date;
 }
 
@@ -24,7 +25,7 @@ export interface Area {
   flag: null | string;
 }
 
-export interface CurrentSeason {
+export interface Season {
   id: number;
   startDate: Date;
   endDate: Date;

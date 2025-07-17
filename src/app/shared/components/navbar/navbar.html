@@ -2,10 +2,8 @@
   <h1 class="text-xl font-bold tracking-wide">⚽ Goal Sight</h1>
 
   <div class="flex gap-4 items-center">
-    <a>Home</a>
-    <a>Leagues</a>
-    <a>Teams</a>
-    <button class="ml-4" (click)="themeService.toggleTheme()">
+    <a routerLink="/competitions" class="cursor-pointer">Competitions</a>
+    <button class="ml-4 cursor-pointer" (click)="themeService.toggleTheme()">
       <span class="hidden dark:inline-block text-2xl">🌙</span>
       <span class="inline-block dark:hidden text-2xl">☀️</span>
     </button>

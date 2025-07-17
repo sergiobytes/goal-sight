@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FootballData } from '../../../services/football-data';
-import { Competition } from '../../../models/competitions.response';
+import { CompetitionData } from '../../../models/competitions.response';
 import { Card } from '../card/card';
 
 @Component({
@@ -12,7 +12,7 @@ import { Card } from '../card/card';
 export default class Layout implements OnInit {
   footballData = inject(FootballData);
 
-  competitions = signal<Competition[]>([]);
+  competitions = signal<CompetitionData[]>([]);
 
   ngOnInit(): void {
     this.fillCompetitions();
