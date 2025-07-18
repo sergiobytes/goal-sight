@@ -1,1 +1,1 @@
-FOOTBALL_API_TOKEN=
+export const FOOTBALL_API_TOKEN = '';
