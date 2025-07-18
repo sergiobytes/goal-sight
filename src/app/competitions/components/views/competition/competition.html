@@ -18,27 +18,26 @@
     class="text-sm text-gray-600 dark:text-gray-300 space-y-1 transition-colors duration-700"
   >
     <p>
-      <span class="font-semibold">From:</span
+      <span class="font-semibold">From: </span
       ><time [dateTime]="season()?.startDate">{{
         season()?.startDate | date
       }}</time>
     </p>
     <p>
-      <span class="font-semibold">To:</span
+      <span class="font-semibold">To: </span
       ><time [dateTime]="season()?.endDate">{{
         season()?.endDate | date
       }}</time>
-    </p>
-    <p>
-      <span class="font-semibold">
-        Matchday: {{ season()?.currentMatchday }}
-      </span>
     </p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
     <!-- Partidos -->
-    <app-competition-matches [matches]="matches()" />
+    <app-competition-matches
+      [matches]="matches()"
+      [currentMatchday]="season()?.currentMatchday ?? 1"
+      [stages]="stageMatchdayPairs()"
+    />
 
     <!-- Posiciones -->
     <app-positions-table [standings]="standings()" />

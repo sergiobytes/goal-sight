@@ -6,9 +6,9 @@ import { Standing } from '../../../../models/standing';
 import { Season } from '../../../../models/season';
 import { CommonModule } from '@angular/common';
 import { Match } from '../../../../models/responses/competition-matches.response';
-import { Stage } from '../../../../models/score';
 import { Table } from '../../table/table';
 import { Matches } from '../../matches/matches';
+import { StageMatchdayPair } from '../../../../models/types/stage-matchday.type';
 
 @Component({
   selector: 'app-competition',
@@ -25,6 +25,8 @@ export default class Competition implements OnInit {
   season = signal<Season | null>(null);
   matches = signal<Match[]>([]);
 
+  stageMatchdayPairs = signal<Set<StageMatchdayPair>>(new Set());
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
@@ -36,7 +38,7 @@ export default class Competition implements OnInit {
         this.standings.set(response.standings);
         this.season.set(response.season);
 
-        this.loadMatches(this.season()?.currentMatchday);
+        this.loadStages();
       },
       error: (error) => {
         console.error('Error fetching competition:', error);
@@ -44,13 +46,27 @@ export default class Competition implements OnInit {
     });
   }
 
-  loadMatches(matchday: number = 0, stage: string = ''): void {
+  loadStages(): void {
     this.footballData
-      .getCompetitionMatchesByMatchDay(this.competition()!.id, matchday)
+      .getAllCompetitionMatches(this.competition()!.id)
       .subscribe({
         next: (response) => {
+          const values = new Set<string>();
+
+          response.matches.forEach((match) => {
+            values.add(`${match.stage}-${match.matchday}`);
+          });
+
+          const stageMatchdayPairs = new Set<StageMatchdayPair>();
+
+          values.forEach((key) => {
+            const [stage, matchday] = key.split('-');
+            stageMatchdayPairs.add({ stage, matchday: Number(matchday) });
+          });
+
+          this.stageMatchdayPairs.set(stageMatchdayPairs);
+
           this.matches.set(response.matches);
-          console.log(this.matches());
         },
         error: (error) => {
           console.error('Error fetching matches:', error);

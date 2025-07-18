@@ -22,21 +22,9 @@ export class FootballData {
     );
   }
 
-  getCompetitionMatchesByMatchDay(
-    id: number,
-    matchday: number
-  ): Observable<CompetitionMatchesResponse> {
+  getAllCompetitionMatches(id: number): Observable<CompetitionMatchesResponse> {
     return this.http.get<CompetitionMatchesResponse>(
-      `/api/competitions/${id}/matches?matchday=${matchday}`
-    );
-  }
-
-  getCompetitionMatchesByStage(
-    id: number,
-    stage: string
-  ): Observable<CompetitionMatchesResponse> {
-    return this.http.get<CompetitionMatchesResponse>(
-      `/api/competitions/${id}/matches?stage=${stage}`
+      `/api/competitions/${id}/matches`
     );
   }
 }

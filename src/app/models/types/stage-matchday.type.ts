@@ -1,0 +1,1 @@
+export type StageMatchdayPair = { stage: string; matchday: number };
