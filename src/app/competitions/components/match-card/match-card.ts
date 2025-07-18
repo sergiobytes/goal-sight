@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { Match } from '../../../models/responses/competition-matches.response';
 import { CommonModule } from '@angular/common';
 import { Status } from '../../../models/score';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-match-card',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './match-card.html',
   styleUrl: './match-card.css',
 })
