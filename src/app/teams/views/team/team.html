@@ -1,1 +1,124 @@
-<p>team works!</p>
+<div
+  class="w-full max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex flex-col gap-6 transition-all"
+>
+  <!-- Team Header -->
+  <div class="flex flex-col sm:flex-row items-center gap-6">
+    <img
+      [src]="teamData()?.crest"
+      [alt]="teamData()?.name"
+      class="w-28 h-28 sm:w-32 sm:h-32 object-contain"
+    />
+
+    <div class="text-center sm:text-left">
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+        {{ teamData()?.name }}
+      </h1>
+      <p class="text-sm text-gray-600 dark:text-gray-300">
+        Founded in {{ teamData()?.founded }} · {{ teamData()?.venue }}
+      </p>
+      <a
+        [href]="teamData()?.website"
+        target="_blank"
+        class="inline-block mt-2 text-custom-yellow hover:underline text-sm"
+      >
+        Visit Website
+      </a>
+    </div>
+  </div>
+
+  <!-- General Information -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-800 dark:text-gray-100"
+  >
+    <div>
+      <address>
+        <span class="font-semibold">Address:</span>
+        <p>{{ teamData()?.address }}</p>
+      </address>
+    </div>
+
+    <div>
+      <span class="font-semibold">Club Colors:</span>
+      <p>{{ teamData()?.clubColors }}</p>
+    </div>
+
+    <div>
+      <span class="font-semibold mr-1">Country:</span>
+
+      <span class="inline-flex items-center align-middle gap-2">
+        <img
+          [src]="teamData()?.area?.flag"
+          [alt]="teamData()?.area?.name"
+          class="w-5 h-5 object-contain"
+        />
+
+        <p>{{ teamData()?.area?.name }}</p>
+      </span>
+    </div>
+
+    <div>
+      <span class="font-semibold">Initials (TLA):</span>
+      <p>{{ teamData()?.tla }}</p>
+    </div>
+  </div>
+
+  <!-- Coach -->
+  <div
+    *ngIf="teamData()?.coach"
+    class="text-sm text-gray-800 dark:text-gray-100"
+  >
+    <p>
+      <span class="font-semibold">Coach:</span>
+      {{ teamData()?.coach?.name }} ({{ teamData()?.coach?.nationality }})<br />
+      <span class="font-medium text-xs">
+        Contract: {{ teamData()?.coach?.contract?.start }} -
+        {{ teamData()?.coach?.contract?.until }}
+      </span>
+    </p>
+  </div>
+
+  <!-- Competitions -->
+  <div *ngIf="teamData()?.runningCompetitions?.length" class="mt-4">
+    <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+      Running Competitions
+    </h2>
+    <ul
+      class="grid sm:grid-cols-2 gap-2 text-sm text-gray-700 dark:text-gray-200"
+    >
+      <li
+        *ngFor="let comp of teamData()?.runningCompetitions"
+        class="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-md flex items-center gap-2"
+      >
+        <img
+          *ngIf="comp.emblem"
+          [src]="comp.emblem"
+          alt="Logo"
+          class="w-5 h-5 object-contain"
+        />
+        <span>{{ comp.name }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Players -->
+  <div *ngIf="teamData()?.squad?.length" class="mt-6">
+    <h2 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+      Plantilla ({{ teamData()?.squad?.length }} jugadores)
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        *ngFor="let player of teamData()?.squad"
+        class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg text-sm flex flex-col gap-1 shadow transition"
+      >
+        <span class="font-semibold text-gray-800 dark:text-white">{{
+          player.name
+        }}</span>
+        <p class="text-gray-600 dark:text-gray-300">
+          {{ player.position || "Sin posición" }}<br />
+          {{ player.nationality }} ·
+          {{ player.dateOfBirth | date : "yyyy-MM-dd" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
