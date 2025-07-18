@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FootballData } from '../../../services/football-data';
 
 import { TeamResponse } from '../../../models/responses/team.response';
 
 @Component({
   selector: 'app-team',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './team.html',
   styleUrl: './team.css',
 })
