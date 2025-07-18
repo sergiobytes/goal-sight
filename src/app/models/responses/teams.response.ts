@@ -1,8 +1,8 @@
 import { Filters } from '../filters';
-import { Team } from '../team';
+import { TeamData } from '../team-data';
 
 export interface TeamsResponse {
   count: number;
   filters: Filters;
-  teams: Team[];
+  teams: TeamData[];
 }

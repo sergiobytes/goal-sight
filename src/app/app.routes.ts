@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./competitions/views/competition/competition'),
   },
   {
+    path: 'team/:id',
+    loadComponent: () => import('./teams/views/team/team'),
+  },
+  {
     path: '**',
     redirectTo: 'competitions',
     pathMatch: 'full',

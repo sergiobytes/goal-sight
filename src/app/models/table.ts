@@ -1,8 +1,8 @@
-import { Team } from './team';
+import { TeamData } from './team-data';
 
 export interface Table {
   position: number;
-  team: Team;
+  team: TeamData;
   playedGames: number;
   form: null;
   won: number;

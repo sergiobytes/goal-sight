@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { Team } from '../../../models/team';
+import { TeamData } from '../../../models/team-data';
 
 @Component({
   selector: 'app-team-card',
@@ -12,7 +12,7 @@ import { Team } from '../../../models/team';
 export class Card {
   private router = inject(Router);
 
-  team = input.required<Team>();
+  team = input.required<TeamData>();
 
   navigateToTeam(idTeam: number) {
     this.router.navigate(['/team', idTeam]);

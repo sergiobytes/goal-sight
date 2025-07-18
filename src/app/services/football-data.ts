@@ -6,6 +6,7 @@ import { CompetitionsResponse } from '../models/responses/competitions.response'
 import { CompetitionStandingsResponse } from '../models/responses/competition-standing.response';
 import { CompetitionMatchesResponse } from '../models/responses/competition-matches.response';
 import { TeamsResponse } from '../models/responses/teams.response';
+import { TeamResponse } from '../models/responses/team.response';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,9 @@ export class FootballData {
     return this.http.get<TeamsResponse>(
       `/api/teams?limit=${limit}&offset=${limit * offset}`
     );
+  }
+
+  getTeamById(id: number): Observable<TeamResponse> {
+    return this.http.get<TeamResponse>(`/api/teams/${id}`);
   }
 }

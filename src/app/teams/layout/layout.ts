@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FootballData } from '../../services/football-data';
-import { Team } from '../../models/team';
+import { TeamData } from '../../models/team-data';
 import { Card } from '../components/card/card';
 
 @Component({
@@ -12,7 +12,7 @@ import { Card } from '../components/card/card';
 export default class Layout implements OnInit {
   footballData = inject(FootballData);
 
-  teams = signal<Team[]>([]);
+  teams = signal<TeamData[]>([]);
 
   currentPage = signal<number>(0);
 

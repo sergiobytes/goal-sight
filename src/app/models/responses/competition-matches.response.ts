@@ -4,7 +4,7 @@ import { Filters } from '../filters';
 import { Referee } from '../referee';
 import { ResultSet, Score, Stage, Status } from '../score';
 import { Season } from '../season';
-import { Team } from '../team';
+import { TeamData } from '../team-data';
 
 export interface CompetitionMatchesResponse {
   filters: Filters;
@@ -24,8 +24,8 @@ export interface Match {
   stage: Stage;
   group: Group | null;
   lastUpdated: Date;
-  homeTeam: Team;
-  awayTeam: Team;
+  homeTeam: TeamData;
+  awayTeam: TeamData;
   score: Score;
   referees: Referee[];
 }
