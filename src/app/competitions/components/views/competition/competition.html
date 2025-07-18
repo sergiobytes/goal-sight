@@ -1,4 +1,152 @@
-<div>
-  <h1>{{ competition()?.name }}</h1>
-  <img [src]="competition()?.emblem" [alt]="competition()?.name" />
+<div
+  class="max-w-5xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-xl p-6 space-y-6 transition-colors duration-700"
+>
+  <div class="flex items-center gap-4">
+    <img
+      [src]="competition()?.emblem"
+      [alt]="competition()?.name"
+      class="w-32 h-32 object-contain"
+    />
+    <h1
+      class="text-2xl font-bold text-gray-800 dark:text-white transition-colors duration-700"
+    >
+      {{ competition()?.name }}
+    </h1>
+  </div>
+
+  <div
+    class="text-sm text-gray-600 dark:text-gray-300 space-y-1 transition-colors duration-700"
+  >
+    <p>
+      <span class="font-semibold">From:</span
+      ><time [dateTime]="season()?.startDate">{{
+        season()?.startDate | date
+      }}</time>
+    </p>
+    <p>
+      <span class="font-semibold">To:</span
+      ><time [dateTime]="season()?.endDate">{{
+        season()?.endDate | date
+      }}</time>
+    </p>
+    <p>
+      <span class="font-semibold">
+        Matchday: {{ season()?.currentMatchday }}
+      </span>
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+    <!-- Partidos -->
+    <div
+      class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow space-y-4 transition-colors duration-700"
+    ></div>
+
+    <!-- Posiciones -->
+    <div
+      class="bg-white dark:bg-gray-900 p-4 rounded-xl shadow space-y-4 transition-colors duration-700"
+    >
+      <h2
+        class="text-xl font-semibold text-gray-800 dark:text-white transition-colors duration-700"
+      >
+        Standings
+      </h2>
+
+      @for(standing of standings(); track $index){ @if(standing.group !== null)
+      {
+      <p
+        class="text-xl text-center font-semibold bg-custom-light dark:bg-custom-dark rounded-2xl p-4 transition-colors duration-700"
+      >
+        {{ standing.group }}
+      </p>
+      }
+
+      <table
+        class="w-full text-sm text-left text-gray-600 dark:text-gray-300 transition-colors duration-700"
+      >
+        <thead
+          class="text-xs uppercase text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 transition-colors duration-700"
+        >
+          <tr>
+            <th class="py-2">#</th>
+            <th class="py-2">Team</th>
+            <th class="py-2 text-right">PG</th>
+            <th class="py-2 text-right">W</th>
+            <th class="py-2 text-right">D</th>
+            <th class="py-2 text-right">L</th>
+            <th class="py-2 text-right">GF</th>
+            <th class="py-2 text-right">GA</th>
+            <th class="py-2 text-right">GD</th>
+            <th class="py-2 text-right">Pts</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for(team of standing.table; track team.team.id){
+
+          <tr
+            class="border-b border-gray-100 dark:border-gray-800 transition-colors duration-700"
+          >
+            <td class="py-2 pr-2 text-sm font-medium text-gray-400 w-4">
+              {{ team.position }}
+            </td>
+            <td class="py-2 flex items-center gap-2">
+              <img
+                [src]="team.team.crest"
+                [alt]="team.team.name"
+                class="w-6 h-6 object-contain hidden sm:inline-block"
+              />
+
+              <span
+                class="text-gray-800 dark:text-white text-sm transition-colors duration-700"
+                >{{ team.team.name }}</span
+              >
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.playedGames }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.won }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.draw }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.lost }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.goalsFor }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.goalsAgainst }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.goalDifference }}
+            </td>
+            <td
+              class="py-2 text-sm text-gray-800 dark:text-white text-right w-8 transition-colors duration-700"
+            >
+              {{ team.points }}
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      }
+    </div>
+  </div>
 </div>
