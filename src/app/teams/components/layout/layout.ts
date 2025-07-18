@@ -24,11 +24,24 @@ export default class Layout implements OnInit {
     this.footballData.getTeams(12, this.currentPage()).subscribe({
       next: (response) => {
         this.teams.set(response.teams);
-        console.log(this.teams());
       },
       error: (error) => {
         console.error('Error fetching teams:', error);
       },
     });
+  }
+
+  prevTeams() {
+    if (this.currentPage() > 0) {
+      this.currentPage.set(this.currentPage() - 1);
+    }
+
+    this.getTeams();
+  }
+
+  nextTeams() {
+    this.currentPage.set(this.currentPage() + 1);
+
+    this.getTeams();
   }
 }

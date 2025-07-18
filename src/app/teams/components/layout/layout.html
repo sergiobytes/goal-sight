@@ -1,8 +1,25 @@
 <div
-  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 min-h-[700px]"
 >
   @for (team of teams(); track team.id) {
 
   <app-team-card [team]="team" />
   }
+</div>
+
+<div class="flex justify-between mt-4 gap-4 w-full">
+  <button
+    (click)="prevTeams()"
+    [disabled]="currentPage() === 0"
+    class="w-full px-4 py-2 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white font-medium disabled:opacity-50 transition"
+  >
+    ← Anterior
+  </button>
+  <p class="flex items-center text-center">Page {{ currentPage() + 1 }}</p>
+  <button
+    (click)="nextTeams()"
+    class="w-full px-4 py-2 rounded-md bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-white font-medium disabled:opacity-50 transition"
+  >
+    Siguiente →
+  </button>
 </div>
