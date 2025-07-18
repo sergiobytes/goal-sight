@@ -35,7 +35,7 @@
     <!-- Partidos -->
     <app-competition-matches
       [matches]="matches()"
-      [currentMatchday]="season()?.currentMatchday ?? 1"
+      [currentIndex]="currentIndex()"
       [stages]="stageMatchdayPairs()"
     />
 

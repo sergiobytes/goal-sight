@@ -1,9 +1,31 @@
 <div
   class="h-full bg-white dark:bg-gray-900 p-4 rounded-xl shadow space-y-4 transition-colors duration-700"
 >
-  <h2 class="text-xl font-semibold text-gray-800 dark:text-white">
-    Matchday : {{ currentMatchday() }}
-  </h2>
+  <div class="flex items-center justify-between mb-4">
+    <button
+      (click)="previousStage()"
+      [disabled]="selectedIndex() === 0"
+      class="text-sm px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+    >
+      ◀
+    </button>
+
+    <span
+      *ngIf="filteredStage()"
+      class="text-lg font-semibold text-gray-800 dark:text-white"
+    >
+      Stage: {{ filteredStage()!.stage.replace("_", " ") }} | Matchday:
+      {{ filteredStage()!.matchday }}
+    </span>
+
+    <button
+      (click)="nextStage()"
+      [disabled]="selectedIndex() >= stages().size - 1"
+      class="text-sm px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+    >
+      ▶
+    </button>
+  </div>
 
   @if(matches().length === 0) {
 
@@ -11,7 +33,7 @@
     No matches available for this matchday.
   </p>
 
-  }@else { @for(match of matches(); track match.id) {
+  }@else { @for(match of filterMatches(); track match.id) {
   <app-match-card [match]="match" />
   } }
 </div>
