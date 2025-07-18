@@ -39,4 +39,8 @@ export enum Group {
   GroupF = 'GROUP_F',
   GroupG = 'GROUP_G',
   GroupH = 'GROUP_H',
+  GroupI = 'GROUP_I',
+  GroupJ = 'GROUP_J',
+  GroupK = 'GROUP_K',
+  GroupL = 'GROUP_L',
 }
