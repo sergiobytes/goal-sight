@@ -3,4 +3,7 @@ export interface Filters {
   season?: string;
   matchday?: number;
   stage?: string[];
+  limit?: number;
+  offset?: number;
+  permission?: string;
 }

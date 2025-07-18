@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./competitions/components/layout/layout'),
   },
   {
+    path: 'teams',
+    loadComponent: () => import('./teams/components/layout/layout'),
+  },
+  {
     path: 'competition/:id',
     loadComponent: () =>
       import('./competitions/components/views/competition/competition'),
