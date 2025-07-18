@@ -1,14 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FootballData } from '../../../../services/football-data';
-import { CompetitionData } from '../../../../models/competition-data';
-import { Standing } from '../../../../models/standing';
-import { Season } from '../../../../models/season';
+import { FootballData } from '../../../services/football-data';
+import { CompetitionData } from '../../../models/competition-data';
+import { Standing } from '../../../models/standing';
+import { Season } from '../../../models/season';
 import { CommonModule } from '@angular/common';
-import { Match } from '../../../../models/responses/competition-matches.response';
-import { Table } from '../../table/table';
-import { Matches } from '../../matches/matches';
-import { StageMatchdayPair } from '../../../../models/types/stage-matchday.type';
+import { Match } from '../../../models/responses/competition-matches.response';
+import { Table } from '../../components/table/table';
+import { Matches } from '../../components/matches/matches';
+import { StageMatchdayPair } from '../../../models/types/stage-matchday.type';
 import { forkJoin } from 'rxjs';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FootballData } from '../../../services/football-data';
-import { Team } from '../../../models/team';
-import { Card } from '../../card/card';
+import { FootballData } from '../../services/football-data';
+import { Team } from '../../models/team';
+import { Card } from '../components/card/card';
 
 @Component({
   selector: 'app-layout',

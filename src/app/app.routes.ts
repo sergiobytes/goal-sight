@@ -3,16 +3,15 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'competitions',
-    loadComponent: () => import('./competitions/components/layout/layout'),
+    loadComponent: () => import('./competitions/layout/layout'),
   },
   {
     path: 'teams',
-    loadComponent: () => import('./teams/components/layout/layout'),
+    loadComponent: () => import('./teams/layout/layout'),
   },
   {
     path: 'competition/:id',
-    loadComponent: () =>
-      import('./competitions/components/views/competition/competition'),
+    loadComponent: () => import('./competitions/views/competition/competition'),
   },
   {
     path: '**',
