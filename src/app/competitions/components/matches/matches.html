@@ -1,7 +1,10 @@
 <div
   class="h-full bg-white dark:bg-gray-900 p-4 rounded-xl shadow space-y-4 transition-colors duration-700"
 >
-  <div class="flex items-center justify-between mb-4">
+  <div
+    *ngIf="matches().length > 0"
+    class="flex items-center justify-between mb-4"
+  >
     <button
       (click)="previousStage()"
       [disabled]="selectedIndex() === 0"
@@ -29,8 +32,10 @@
 
   @if(matches().length === 0) {
 
-  <p class="text-gray-500 dark:text-gray-400">
-    No matches available for this matchday.
+  <p
+    class="text-gray-500 dark:text-gray-400 text-center font-semibold text-2xl"
+  >
+    No matches available.
   </p>
 
   }@else { @for(match of filterMatches(); track match.id) {
